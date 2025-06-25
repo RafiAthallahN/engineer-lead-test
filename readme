@@ -1,0 +1,108 @@
+# 🚐 Aplikasi Pemesanan Kendaraan – Perusahaan Tambang
+
+Aplikasi berbasis web untuk mengelola pemesanan, persetujuan, dan pelaporan kendaraan di lingkungan perusahaan pertambangan nikel dengan banyak lokasi operasional dan jenis kendaraan.
+
+---
+
+## 📦 Fitur Utama
+
+- 📝 Formulir pemesanan kendaraan
+- ✅ Persetujuan berjenjang (2 level)
+- 📊 Dashboard statistik pemakaian kendaraan
+- 📁 Laporan periodik pemesanan + Export Excel
+- 🔒 Role-based access (Admin dan Approver)
+- 📱 UI responsif (Livewire + Tailwind)
+
+---
+
+## 🧑‍💼 Role & Akses
+
+| Role     | Akses                                                                 |
+|----------|-----------------------------------------------------------------------|
+| Admin    | Input pemesanan, assign driver & approver, akses dashboard & laporan  |
+| Approver | Melihat daftar pemesanan dan menyetujui/menolak sesuai levelnya       |
+
+---
+
+## 🔐 Daftar Username & Password
+
+| Nama         | Email               | Password  | Role      |
+|--------------|---------------------|-----------|-----------|
+| Admin        | admin@demo.com      | password  | admin     |
+| Approver 1   | approver1@demo.com  | password  | approver  |
+| Approver 2   | approver2@demo.com  | password  | approver  |
+
+---
+
+## ⚙️ Environment
+
+| Komponen     | Versi                        |
+|--------------|------------------------------|
+| Laravel      | 12.x                         |
+| PHP          | 8.3+                         |
+| Database     | SQLite (default)             |
+| Frontend     | Livewire + Tailwind          |
+| Export       | Laravel Excel (maatwebsite/excel) |
+
+---
+
+## 🚀 Instalasi
+
+1. **Clone Repo**
+    ```bash
+    git clone <repo-url>
+    cd vehicle-booking-app
+    ```
+
+2. **Install Dependency**
+    ```bash
+    composer install
+    npm install && npm run dev
+    ```
+
+3. **Setup Environment**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Setup Database**
+    ```bash
+    touch database/database.sqlite
+    ```
+    Lalu, di `.env` ubah:
+    ```
+    DB_CONNECTION=sqlite
+    ```
+
+5. **Migration & Seeding**
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+6. **Jalankan Server**
+    ```bash
+    php artisan serve
+    ```
+
+---
+
+## 🧪 Panduan Penggunaan
+
+### ➕ Buat Pemesanan
+- Login sebagai Admin
+- Buka `/booking/create` untuk melihat grafik pemakaian
+- Isi form pemesanan: pilih kendaraan, driver, dan 2 approver
+
+### ✅ Persetujuan
+- Login sebagai Approver
+- Lihat halaman `/approval`
+- Approver level 1 menyetujui terlebih dahulu → baru level 2 bisa approve
+
+### 📊 Dashboard
+- Login sebagai Admin
+- Buka `/dashboard` untuk melihat grafik pemakaian
+
+### 📄 Laporan & Export
+- Akses `/admin/reports`
+- Filter tanggal → klik tombol "Export ke Excel"
